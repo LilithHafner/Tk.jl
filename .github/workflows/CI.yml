@@ -72,7 +72,13 @@ jobs:
           echo $*
           echo "$@"
           echo "$*"
-          xvfb-run -a \"$*\"" > xvfb-run-a
+          xvfb-run -a \"$*\"
+          xvfb-run -a \"$@\"
+          xvfb-run -a '$*'
+          xvfb-run -a '$@'
+          xvfb-run -a $*
+          xvfb-run -a $@
+          echo "Done" > xvfb-run-a
           chmod +x xvfb-run-a
           sudo mv xvfb-run-a /usr/bin
       - uses: julia-actions/julia-docdeploy@v1
