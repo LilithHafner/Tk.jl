@@ -67,9 +67,11 @@ jobs:
       - uses: julia-actions/julia-buildpkg@v1
       - run: sudo apt-get update
       - run: sudo apt-get install -y xvfb xauth
-      - run: echo "#!/bin/bash\nxvfb-run -a $@" > xvfb-run-a
-      - run: chmod +x xvfb-run-a
-      - run: sudo mv xvfb-run-a /usr/bin
+      - run: |
+          echo "#!/bin/bash
+          xvfb-run -a $@" > xvfb-run-a
+          chmod +x xvfb-run-a
+          sudo mv xvfb-run-a /usr/bin
       - uses: julia-actions/julia-docdeploy@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
