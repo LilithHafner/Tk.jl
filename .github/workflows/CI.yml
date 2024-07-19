@@ -67,7 +67,7 @@ jobs:
       - uses: julia-actions/julia-buildpkg@v1
       - run: sudo apt-get update
       - run: sudo apt-get install -y xvfb xauth
-      - run: echo "#!/bin/bash\nxvfb-run -a $@" > /usr/bin/xvfb-run-a
+      - run: sudo echo "#!/bin/bash\nxvfb-run -a $@" > /usr/bin/xvfb-run-a
       - run: chmod +x /usr/bin/xvfb-run-a
       - uses: julia-actions/julia-docdeploy@v1
         env:
