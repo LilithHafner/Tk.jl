@@ -67,11 +67,12 @@ jobs:
       - uses: julia-actions/julia-buildpkg@v1
       - run: sudo apt-get update
       - run: sudo apt-get install -y xvfb xauth
+      - run: echo "#!/bin/bash\nxvfb-run -a $@" > /usr/bin/xvfb-run-a
       - uses: julia-actions/julia-docdeploy@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          prefix: xvfb-run -a
+          prefix: xvfb-run-a
       - name: Run doctests
         shell: xvfb-run -a julia --project=docs --color=yes {0}
         run: |
