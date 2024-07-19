@@ -73,7 +73,7 @@ jobs:
         with:
           prefix: xvfb-run
       - name: Run doctests
-        shell: julia --project=docs --color=yes {0}
+        shell: xvfb-run julia --project=docs --color=yes {0}
         run: |
           using Documenter: DocMeta, doctest
           using Tk
