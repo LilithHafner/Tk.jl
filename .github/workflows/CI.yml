@@ -71,6 +71,8 @@ jobs:
           echo "#!/bin/bash
           echo $@
           echo $*
+          echo "$@"
+          echo "$*"
           xvfb-run -a \"$*\"" > xvfb-run-a
           chmod +x xvfb-run-a
           sudo mv xvfb-run-a /usr/bin
